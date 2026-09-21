@@ -26,19 +26,27 @@ daemon: everything is local.
 - `notify-send` (libnotify) for new-item notifications, `xdg-open` to open links.
 - A Font Awesome / Nerd Font (Omarchy ships one) for the icons.
 
-## Install (on a new machine)
+## Install
 
-Copy this folder to `~/.config/omarchy/plugins/levonium.rss/`. The folder name
-must match the `id` in `manifest.json`. Then:
+```bash
+omarchy plugin add https://github.com/levonium/omarchy-rss.git --enable
+```
+
+This clones the repo into `~/.config/omarchy/plugins/levonium.rss/` (named after
+the `id` in `manifest.json`) and puts the icon on the right side of the bar. If
+the icon doesn't appear, run `omarchy restart shell`.
+
+To install by hand instead, copy the folder to
+`~/.config/omarchy/plugins/levonium.rss/` (the folder name must match the `id`),
+then run:
 
 ```bash
 omarchy-shell shell rescanPlugins
-omarchy plugin enable levonium.rss    # adds it to the right side of the bar
+omarchy plugin enable levonium.rss
 omarchy restart shell                 # only if the icon doesn't appear
 ```
 
-If you keep the folder in a git repo, `omarchy plugin add <git-url> --enable`
-does the copy and enable in one step.
+Update later with `omarchy plugin update levonium.rss`.
 
 Move the icon with `omarchy bar move levonium.rss --section left|center|right`
 or by dragging it in the bar.
@@ -130,3 +138,7 @@ runs are safe (a file lock serialises writes).
 - **A feed shows a red error under its name:** the last fetch failed (HTTP
   error, timeout, or not valid RSS/Atom). It retries on the next refresh.
 - **Check for QML errors:** `quickshell log -n -p /usr/share/omarchy/shell | grep -i levonium`
+
+## License
+
+[MIT](LICENSE)
