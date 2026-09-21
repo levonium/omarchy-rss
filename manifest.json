@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "levonium.rss",
+  "name": "RSS",
+  "version": "1.0.0",
+  "author": "levonium",
+  "description": "Simple local RSS/Atom feed reader",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "RSS",
+    "description": "Manage RSS/Atom feeds and browse new items",
+    "category": "Network",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshIntervalMin": 30
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalMin",
+        "type": "integer",
+        "label": "Refresh interval (minutes)",
+        "min": 5,
+        "max": 1440,
+        "step": 5,
+        "defaultValue": 30
+      }
+    ]
+  }
+}
